@@ -1,9 +1,12 @@
-import java.io.*;
+
+   import java.io.*;
 interface LList{
     public void insert(int ele);
     public void delete();
     public void disp(Node node);
     public Node getRoot();
+    public void delete(int Index);
+  //  public void deleteV(int value);
     
 }
 
@@ -51,27 +54,50 @@ class SList implements LList{
         Node t=node;
         while(t!=null)
         {
-            System.out.println(t.data);
+            System.out.print(t.data+ " ");
             t=t.next;
         }
+        System.out.println(" ");
     }
     public Node getRoot()
     {
         return root;
     }
+    public void delete(int Index)
+    {
+        if(Index==0)
+        {
+            root=root.next;
+        }
+        Node t=root;
+        Node p=root;
+        int f=0;
+        while(Index>f)
+        {
+            p=t;
+            t=t.next;
+            f++;
+        }
+        p.next=t.next;
+    }
+   
 }
 
 class GFG {
 	public static void main (String[] args) {
 	    
 	    LList l=new SList();
-	//    Node root=null;
 	    l.insert(10);
 	    l.insert(20);
 	    l.insert(30);
-	    l.disp(l.getRoot());
+	   // l.disp(l.getRoot());
 	    l.insert(40);
-	    l.delete();
+	    l.insert(32);
+	   // l.delete(0);
+	    l.disp(l.getRoot());
+	    l.delete(0);
+	    l.disp(l.getRoot());
+	    
 	    
 	}
 }
