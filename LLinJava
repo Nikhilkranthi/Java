@@ -1,0 +1,77 @@
+import java.io.*;
+interface LList{
+    public void insert(int ele);
+    public void delete();
+    public void disp(Node node);
+    public Node getRoot();
+    
+}
+
+class Node{
+    public int data;
+    public Node next;
+ //   public Node root=null;
+    Node(int ele)
+    {
+        this.data=ele;
+        this.next=null;
+    }
+}
+
+class SList implements LList{
+   public Node root=null;
+    public void insert(int ele)
+    {
+        if(root==null)
+        {
+             Node newNode=new Node(ele);
+             root=newNode;
+             
+        }
+        else
+        {
+            Node newNode=new Node(ele);
+            newNode.next=root;
+            root=newNode;
+        }
+    }
+    public void delete()
+    {
+        if(root==null)
+        {
+            System.out.println("The list is already empty!!! :(");
+        }
+        else
+        {
+            root=root.next;
+        }
+    }
+    public void disp(Node node)
+    {
+        Node t=node;
+        while(t!=null)
+        {
+            System.out.println(t.data);
+            t=t.next;
+        }
+    }
+    public Node getRoot()
+    {
+        return root;
+    }
+}
+
+class GFG {
+	public static void main (String[] args) {
+	    
+	    LList l=new SList();
+	//    Node root=null;
+	    l.insert(10);
+	    l.insert(20);
+	    l.insert(30);
+	    l.disp(l.getRoot());
+	    l.insert(40);
+	    l.delete();
+	    
+	}
+}
